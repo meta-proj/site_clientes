@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta - Carregando...</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="loading-body">
+
+    <div class="loading-content">
+        <img src="{{ url_for('static', filename='logo_meta.png') }}" alt="Logo M&TA" class="loading-logo">
+        <p class="loading-text">
+            Carregando dados do Power BI 
+            <span class="loading-dots">
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+            </span>
+        </p>
+    </div>
+
+</body>
+</html>

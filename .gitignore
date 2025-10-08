@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# Virtualenv
+.venv/
+venv/
+
+# Sistema/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Segredos (se existir no projeto)
+.env
+config.py

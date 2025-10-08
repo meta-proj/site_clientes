@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="login-body">
+
+    <div id="particle-net-bg"></div>
+
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='logo_meta.png') }}" alt="Logo M&TA" class="login-logo">
+        <h2>Bem-vindo(a)!</h2>
+
+        {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+        {% elif info_message %}
+            <div class="message-container">
+                <p>{{ info_message }}</p>
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            <input type="text" name="username" placeholder="Usuário" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <a href="{{ url_for('forgot_password') }}" class="forgot-password">Esqueceu sua senha?</a>
+        
+        <p class="footer-link">Acompanhe a Meta no <a href="https://www.instagram.com/meta.assessoria/" target="_blank">Instagram!</a></p>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/particle_net.js') }}" defer></script>
+</body>
+</html>

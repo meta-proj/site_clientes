@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Cliente Meta - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="dashboard-body">
+
+    <header class="header">
+        <div class="header-left">
+            <img src="{{ url_for('static', filename='logo_meta.png') }}" alt="Logo Meta" class="header-logo">
+            <h1>Portal do Cliente Meta</h1>
+        </div>
+        <div class="header-right">
+            <span>Olá, {{ username }}</span>
+            <a href="{{ url_for('logout') }}" class="logout-link">Sair</a>
+        </div>
+    </header>
+
+    {% if bi_url or error %}
+    <nav class="reports-nav">
+        {% for report in available_reports %}
+            <a href="{{ url_for('dashboard', bi_key=report.key) }}"
+               class="{% if report.key == active_key %}active{% endif %}"
+            >
+                {{ report.name }}
+            </a>
+        {% endfor %}
+    </nav>
+    {% endif %}
+    
+    <main class="main-content">
+        {% if not bi_url and not error %}
+            <section class="welcome-section">
+                <h1>Bem-vindo(a), {{ username }}!</h1>
+                <p>Selecione um dos relatórios abaixo para visualizar suas informações.</p>
+                
+                <div class="reports-grid">
+                    {% for report in available_reports %}
+                        <a href="{{ url_for('dashboard', bi_key=report.key) }}" class="report-card">
+                            <span class="report-icon">
+                                {% if report.key == 'dp' %}👥{% elif report.key == 'fiscal' %}💰{% elif report.key == 'contabil' %}📊{% elif report.key == 'produtos' %}📦{% else %}⭐{% endif %}
+                            </span>
+                            <h2>{{ report.name }}</h2>
+                            <p>Clique para visualizar o painel.</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+
+        {% if bi_url %}
+            <div class="iframe-container">
+                <iframe src="{{ bi_url }}" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error-box">
+                <h2>Acesso Negado</h2>
+                <p>{{ error }}</p>
+                <p>Para solicitar o acesso ou mais informações, entre em contato com o suporte:</p>
+                <a href="mailto:contato@metassessoria.com.br" class="btn-support">Falar com o Suporte</a>
+            </div>
+        {% endif %}
+    </main>
+
+</body>
+</html>
