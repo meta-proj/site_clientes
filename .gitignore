@@ -4,6 +4,13 @@ __pycache__/
 *.egg-info/
 .eggs/
 .pytest_cache/
+cat > .gitignore << 'EOF'
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
 
 # Virtualenv
 .venv/
@@ -14,6 +21,6 @@ venv/
 .vscode/
 .idea/
 
-# Segredos (se existir no projeto)
+# Segredos (ajuste conforme seu projeto)
 .env
 config.py
