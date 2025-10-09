@@ -109,6 +109,7 @@ def logout():
     session.clear()
     return redirect(url_for("login"))
 
-if __name__ == "__main__":
-    # Para produção na KingHost, use:
-    app.run(host='0.0.0.0', port=5000)
+# (Opcional) Healthcheck para plataformas de deploy
+@app.get("/health")
+def health():
+    return {"status": "ok"}, 200
