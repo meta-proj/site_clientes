@@ -2,200 +2,175 @@
 
 /* Cores da Paleta */
 :root {
-    --primary-color: #5A3334;  /* Marrom Principal */
-    --secondary-color: #7B4445; /* Variação de Marrom Mais Claro */
-    --accent-color: #A66567; /* Variação de Marrom Mais Suave */
-    --text-color: #333333; /* Cinza Escuro para textos */
-    --light-bg-color: #f4f4f4; /* Fundo padrão */
-    --white-color: #FFFFFF;
+    --primary-color: #5A3334;  /* Marrom Principal */
+    --secondary-color: #7B4445; /* Variação de Marrom Mais Claro */
+    --accent-color: #A66567; /* Variação de Marrom Mais Suave */
+    --text-color: #333333; /* Cinza Escuro para textos */
+    --light-bg-color: #f4f4f4; /* Fundo padrão */
+    --white-color: #FFFFFF;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light-bg-color);
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
 }
 
 /* Estilo para a página de login */
 .login-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 
-    /* AQUI É A CHAVE: Adicionar position: relative para garantir o z-index */
-    position: relative; 
-    z-index: 5; /* Z-Index intermediário, se necessário */
-
-    /* Fundo limpo para que o Canvas possa controlar o visual */
-    background-color: var(--light-bg-color);
-    background-image: none; 
+    position: relative; 
+    z-index: 5;
+    background-color: var(--light-bg-color);
+    background-image: none; 
 }
 
 /* CONTAINER DE FUNDO para o Canvas */
 #particle-net-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Fica no fundo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 /* Estilos de Login */
 .login-container {
-    background: var(--white-color);
-    padding: 50px;
-    padding-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    width: 350px;
-    z-index: 10;
-    
-    /* GARANTE QUE O FORMULÁRIO ESTEJA ACIMA DE TUDO */
-    position: relative; 
-    z-index: 10; /* Fica na frente do Canvas (z-index: 1) */
+    background: var(--white-color);
+    padding: 50px;
+    padding-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 350px;
+    z-index: 10;
+    position: relative; 
+    z-index: 10;
 }
 .login-container h2 {
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 .login-container input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 .login-container button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background-color: var(--primary-color);
-    color: var(--white-color); 
-    font-size: 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white-color); 
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 .login-container button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color);
 }
 .forgot-password {
-    margin-top: 10px;
-    display: block;
-    color: var(--primary-color);
-    font-size: 14px;
-    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    color: var(--primary-color);
+    font-size: 14px;
+    text-decoration: none;
 }
 .forgot-password:hover {
-    text-decoration: underline;
+    text-decoration: underline;
 }
 .message-container {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    color: var(--text-color);
-    text-align: center;
-    transition: all 0.5s ease-in-out;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: var(--text-color);
+    text-align: center;
+    transition: all 0.5s ease-in-out;
 }
 .message-container p {
-    margin: 0;
+    margin: 0;
 }
 .footer-link {
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 20px;
+    font-size: 14px;
 }
 .footer-link a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
 }
 .footer-link a:hover {
-    text-decoration: underline;
+    text-decoration: underline;
 }
 .login-logo {
-    width: 150px; /* Tamanho maior para a tela de login */
-    margin-bottom: 15px;
+    width: 150px;
+    margin-bottom: 15px;
 }
 
-/* Estilo para a mensagem de erro de login */
 .error-message {
-    color: #d9534f;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
+    color: #d9534f;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Estilos de Dashboard */
 .dashboard-body {
-    display: block;
-    overflow: auto;
+    display: block;
+    overflow: auto;
 }
-
-/* 1. MODIFICAÇÃO PRINCIPAL: Ajuste do cabeçalho para alinhamento Flexbox */
 .header {
-    background-color: var(--white-color);
-    padding: 8px 15px;
-    display: flex;
-    justify-content: space-between; /* Distribui os itens: Esquerda, Centro, Direita */
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 60px; /* Garante uma altura mínima para todos os elementos ficarem alinhados */
+    background-color: var(--white-color);
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .header-left {
-    display: flex;
-    align-items: center;
+    display: flex;
+    align-items: center;
 }
-
-/* 2. MODIFICAÇÃO: Ajuste do título para não forçar a linha de navegação */
 .header-left h1 {
-    margin: 0;
-    font-size: 20px;
-    color: var(--primary-color);
-    margin-left: 10px;
-    font-weight: 600;
-    white-space: nowrap; /* Impede que o texto quebre, ocupando o mínimo de espaço */
+    margin: 0;
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-weight: 600;
 }
-
 .header-logo {
-    width: 80px;
+    width: 80px;
 }
 
-/* --- ESTILOS DE NAVEGAÇÃO E DASHBOARD NOVO --- */
-
-/* REMOVIDO: Antigo estilo .reports-nav que não é mais usado na nova estrutura HTML */
-
-/* NOVO ESTILO PARA NAVEGAÇÃO CENTRALIZADA (reports-nav-center) */
-.reports-nav-center {
-    /* Define o Flexbox para alinhar os botões */
-    display: flex; 
+/* Navegação de Relatórios (abaixo do Header) */
+.reports-nav {
+    display: flex;
     gap: 5px;
-    
-    /* Permite que esta seção cresça e ocupe o espaço central */
-    flex-grow: 1; 
-    
-    /* Centraliza os botões dentro do espaço que lhes foi dado */
-    justify-content: center; 
-    
-    /* Alinhamento de emergência (se o header-left for muito alto) */
-    align-items: center; 
+    padding: 10px 20px;
+    background-color: var(--white-color);
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.reports-nav-center a {
+.reports-nav a {
     text-decoration: none;
     color: var(--primary-color);
     font-weight: 600;
@@ -204,212 +179,210 @@ body {
     transition: all 0.3s ease;
 }
 
-.reports-nav-center a:hover {
+.reports-nav a:hover {
     background-color: var(--light-bg-color);
     color: var(--primary-color);
 }
 
-.reports-nav-center a.active {
+.reports-nav a.active {
     background-color: var(--primary-color);
     color: var(--white-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-/* FIM DA NOVO ESTILO reports-nav-center */
-
 
 /* Header - Ajuste para separar o Sair */
 .header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
 }
 .header-right .logout-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 .header-right .logout-link:hover {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
 .header-right span {
-    color: var(--text-color);
+    color: var(--text-color);
 }
 
-/* --- TELA INICIAL (SEM BI SELECIONADO) --- */
+/* --- TELA INICIAL --- */
 
 .welcome-section {
-    padding: 40px;
-    text-align: center;
-    background-color: var(--white-color);
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    text-align: center;
+    background-color: var(--white-color);
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 .welcome-section h1 {
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 5px;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 .welcome-section p {
-    color: var(--text-color);
-    margin-bottom: 40px;
+    color: var(--text-color);
+    margin-bottom: 40px;
 }
 
 .reports-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
 }
 
-/* Cards de Relatório na Tela Inicial */
+/* Cards */
 .report-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 180px;
-    padding: 20px;
-    background-color: var(--white-color);
-    border: 1px solid var(--accent-color);
-    border-radius: 8px;
-    text-align: center;
-    text-decoration: none;
-    color: var(--text-color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 180px;
+    padding: 20px;
+    background-color: var(--white-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 .report-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: var(--light-bg-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: var(--light-bg-color);
 }
 .report-card h2 {
-    font-size: 1.2em;
-    color: var(--primary-color);
-    margin: 5px 0;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin: 5px 0;
 }
 .report-icon {
-    font-size: 3em;
-    color: var(--accent-color);
-    margin-bottom: 10px;
-    display: block;
+    font-size: 3em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    display: block;
 }
 .report-card p {
-    font-size: 0.85em;
-    color: var(--secondary-color);
+    font-size: 0.85em;
+    color: var(--secondary-color);
 }
 
 /* --- TRATAMENTO DE ERRO APRIMORADO --- */
 
 .error-box {
-    padding: 30px;
-    margin: 50px auto;
-    max-width: 600px;
-    background-color: #fff8f8; /* Fundo mais suave para erro */
-    border: 1px solid #d9534f;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 50px auto;
+    max-width: 600px;
+    background-color: #fff8f8;
+    border: 1px solid #d9534f;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .error-box h2 {
-    color: #d9534f; /* Vermelho de erro */
-    margin-top: 0;
+    color: #d9534f;
+    margin-top: 0;
 }
 .error-box p {
-    margin-bottom: 20px;
-    font-size: 1.1em;
+    margin-bottom: 20px;
+    font-size: 1.1em;
 }
 
 .btn-support {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background-color 0.3s;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s;
 }
 .btn-support:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color);
 }
 
-/* --- IFRAME / CONTEÚDO PRINCIPAL --- */
+/* --- CONTEÚDO PRINCIPAL --- */
 
 .main-content {
-    width: 95%;
-    margin: 20px auto;
-    background-color: var(--white-color);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin: 20px auto;
+    background-color: var(--white-color);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .iframe-container {
-    height: calc(100vh - 180px); /* Ajusta a altura com base no header/nav */
-    overflow: hidden;
+    height: calc(100vh - 180px);
+    overflow: hidden;
 }
 .iframe-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
-/* Estilos da tela de carregamento (loading) */
+/* (loading) */
 .loading-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: var(--light-bg-color);
-    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--light-bg-color);
+    color: var(--text-color);
 }
 .loading-content {
-    text-align: center;
-    margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 .loading-logo {
-    width: 200px;
-    margin-bottom: 30px;
+    width: 200px;
+    margin-bottom: 30px;
 }
 .loading-text {
-    font-size: 1.5em;
-    color: var(--primary-color);
-    font-weight: 600;
+    font-size: 1.5em;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 /* Animação dos três pontinhos */
 .loading-dots {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: bottom;
-    line-height: 1;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1;
 }
 .loading-dots span {
-    opacity: 0;
-    animation: fadeInOut 1.5s infinite;
+    opacity: 0;
+    animation: fadeInOut 1.5s infinite;
 }
 .loading-dots span:nth-child(1) {
-    animation-delay: 0s;
+    animation-delay: 0s;
 }
 .loading-dots span:nth-child(2) {
-    animation-delay: 0.5s;
+    animation-delay: 0.5s;
 }
 .loading-dots span:nth-child(3) {
-    animation-delay: 1s;
+    animation-delay: 1s;
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
