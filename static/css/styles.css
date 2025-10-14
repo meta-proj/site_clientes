@@ -18,7 +18,7 @@ body {
     color: var(--text-color);
 }
 
-/* Estilo para a página de login (sem alterações) */
+/* Estilo para a página de login */
 .login-body {
     display: flex;
     justify-content: center;
@@ -29,10 +29,9 @@ body {
     position: relative; 
     z-index: 5;
     background-color: var(--light-bg-color);
-    background-image: none; 
+    background-image: none;
 }
 
-/* CONTAINER DE FUNDO para o Canvas (sem alterações) */
 #particle-net-bg {
     position: absolute;
     top: 0;
@@ -42,7 +41,7 @@ body {
     z-index: 1;
 }
 
-/* Estilos de Login (sem alterações) */
+/* Estilos de Login */
 .login-container {
     background: var(--white-color);
     padding: 50px;
@@ -50,7 +49,8 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     text-align: center;
-    width: 350px;
+    width: 70%; 
+    max-width: 380px; 
     z-index: 10;
     position: relative; 
     z-index: 10;
@@ -138,7 +138,7 @@ body {
     overflow: auto;
 }
 
-/* HEADER - Solução Final de 3 Colunas Centralizadas */
+/* HEADER - Solução Final de 3 Colunas Centralizadas (Mantido para Desktop) */
 .header {
     background-color: var(--white-color);
     padding: 8px 15px;
@@ -154,7 +154,7 @@ body {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    /* Define uma largura base para garantir distribuição simétrica */
+    /* Usa flex-basis. Será sobrescrito pelo Media Query no celular. */
     flex-basis: 200px; 
 }
 
@@ -172,7 +172,6 @@ body {
 
 /* Estilos específicos do lado direito */
 .header-right {
-    /* Alinha o conteúdo (Olá, admin | Sair) à direita da sua coluna base */
     justify-content: flex-end; 
     gap: 15px;
     font-weight: 600;
@@ -202,7 +201,7 @@ body {
     display: none;
 }
 
-/* --- TELA INICIAL (sem alterações) --- */
+/* --- TELA INICIAL --- */
 
 .welcome-section {
     padding: 40px;
@@ -210,6 +209,7 @@ body {
     background-color: var(--white-color);
     margin: 20px auto;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 .welcome-section h1 {
     color: var(--primary-color);
@@ -221,6 +221,7 @@ body {
     margin-bottom: 40px;
 }
 
+/* AJUSTE PARA DESKTOP: Garante que cards fiquem alinhados */
 .reports-grid {
     display: flex;
     justify-content: center;
@@ -229,12 +230,13 @@ body {
     margin-top: 20px;
 }
 
-/* Cards (sem alterações) */
+/* Cards (Usa max-width em vez de largura fixa no card) */
 .report-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 200px;
+    max-width: 200px; /* Usa max-width */
+    width: 45%; /* Ajuda na responsividade sem quebrar o layout */
     height: 180px;
     padding: 20px;
     background-color: var(--white-color);
@@ -267,8 +269,7 @@ body {
     color: var(--secondary-color);
 }
 
-/* --- TRATAMENTO DE ERRO APRIMORADO (sem alterações) --- */
-
+/* --- TRATAMENTO DE ERRO APRIMORADO (mantido) --- */
 .error-box {
     padding: 30px;
     margin: 50px auto;
@@ -287,7 +288,6 @@ body {
     margin-bottom: 20px;
     font-size: 1.1em;
 }
-
 .btn-support {
     display: inline-block;
     padding: 10px 20px;
@@ -302,8 +302,7 @@ body {
     background-color: var(--secondary-color);
 }
 
-/* --- CONTEÚDO PRINCIPAL (sem alterações) --- */
-
+/* --- CONTEÚDO PRINCIPAL (COM AJUSTE DE MIN-HEIGHT) --- */
 .main-content {
     width: 95%;
     margin: 20px auto;
@@ -311,10 +310,12 @@ body {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 100px); 
 }
 
 .iframe-container {
-    height: calc(100vh - 135px);
+    /* ALTURA MÍNIMA PARA O IFRAME */
+    height: calc(100vh - 120px); 
     overflow: hidden;
 }
 .iframe-container iframe {
@@ -324,7 +325,7 @@ body {
     display: block;
 }
 
-/* (loading) (sem alterações) */
+/* (loading) (mantido) */
 .loading-body {
     display: flex;
     flex-direction: column;
@@ -347,8 +348,6 @@ body {
     color: var(--primary-color);
     font-weight: 600;
 }
-
-/* Animação dos três pontinhos (sem alterações) */
 .loading-dots {
     display: inline-block;
     overflow: hidden;
@@ -368,35 +367,26 @@ body {
 .loading-dots span:nth-child(3) {
     animation-delay: 1s;
 }
-
 @keyframes fadeInOut {
     0% { opacity: 0; }
     50% { opacity: 1; }
     100% { opacity: 0; }
 }
 
-
 /* ---------------------------------------------------------------------- */
-/* --- ESTILOS DE NAVEGAÇÃO CENTRALIZADA --- */
+/* --- ESTILOS DE NAVEGAÇÃO CENTRALIZADA (mantido) --- */
 /* ---------------------------------------------------------------------- */
-
-/* 1. CONTAINER CENTRAL: Força o espaço e centraliza o conteúdo. */
 .nav-center-container {
     flex-grow: 1; 
     text-align: center;
     align-self: center;
     min-width: 0; 
 }
-
-/* 2. NAVEGAÇÃO CENTRALIZADA: Alinhamento dos botões (links) */
 .reports-nav-centralizada {
     display: inline-flex; 
     gap: 5px;
     white-space: nowrap; 
 }
-
-
-/* Estilos de link da navegação centralizada (sem alterações) */
 .reports-nav-centralizada a {
     text-decoration: none;
     color: var(--primary-color);
@@ -405,17 +395,113 @@ body {
     border-radius: 5px;
     transition: all 0.3s ease;
 }
-
 .reports-nav-centralizada a:hover {
     background-color: var(--light-bg-color);
     color: var(--primary-color);
 }
-
 .reports-nav-centralizada a.active {
     background-color: var(--primary-color);
     color: var(--white-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* ---------------------------------------------------------------------- */
+/* --- INÍCIO: MEDIA QUERIES PARA RESPONSIVIDADE (CELULARES E TABLETS) --- */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    
+    /* 1. LAYOUT GERAL DO CORPO */
+    body {
+        font-size: 14px;
+    }
+    .main-content {
+        width: 98%; /* Aumenta a largura para ocupar mais espaço horizontal */
+        margin: 10px auto;
+        padding: 5px;
+        /* Reajusta o min-height para compensar o cabeçalho de múltiplas linhas */
+        min-height: calc(100vh - 180px); 
+    }
+
+    /* 2. CABEÇALHO (HEADER) - Quebra de 3 colunas para empilhar */
+    .header {
+        flex-wrap: wrap; 
+        padding: 5px 10px;
+        /* Alinha o logo e o usuário às extremidades, forçando o centro */
+        justify-content: space-between; 
+        align-items: flex-start;
+    }
+
+    /* O LOGO E TÍTULO (`.header-left`) */
+    .header-left {
+        flex-basis: auto; /* Deixa a largura fluir */
+        flex-grow: 1; /* Ocupa o espaço esquerdo */
+        margin-bottom: 5px;
+        padding-right: 10px; /* Adiciona um pequeno respiro */
+    }
+    .header-left h1 {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+    .header-logo {
+        width: 60px; /* Reduz o tamanho do logo */
+    }
+
+    /* INFORMAÇÃO DO USUÁRIO (`.header-right`) - Fica ao lado do logo */
+    .header-right {
+        flex-basis: auto;
+        justify-content: flex-end; /* Fica alinhado à direita */
+        gap: 8px;
+        order: 2; /* Fica na mesma linha do logo (se houver espaço) */
+    }
+    .header-right span {
+        display: none; /* Oculta o "Olá, admin" para economizar espaço */
+    }
 
 
+    /* A NAVEGAÇÃO (`.nav-center-container`) - Fica em uma linha separada */
+    .nav-center-container {
+        flex-basis: 100%; /* Ocupa a largura total abaixo do logo/usuário */
+        order: 3; /* Vai para a terceira linha */
+        margin: 5px 0 0 0;
+        text-align: center;
+        border-top: 1px solid var(--light-bg-color); /* Separador visual */
+        padding-top: 5px;
+    }
+    .reports-nav-centralizada {
+        flex-wrap: wrap; 
+        justify-content: center;
+        width: 100%;
+    }
+    .reports-nav-centralizada a {
+        padding: 6px 8px; /* Reduz o padding dos botões */
+        font-size: 0.8em;
+    }
+
+    /* 3. TELA INICIAL (CARDS) */
+    .welcome-section {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    .reports-grid {
+        flex-direction: column; /* Empilha os cards verticalmente */
+        gap: 15px;
+    }
+    .report-card {
+        max-width: none; /* Remove a largura máxima */
+        width: 90%; /* Ocupa quase a largura total */
+        height: auto; 
+        margin: 0 auto; 
+        padding: 15px;
+    }
+
+    /* 4. IFRAME (Visualização do Power BI) */
+    .iframe-container {
+        /* Altura reduzida para acomodar o cabeçalho de três linhas (em dispositivos móveis) */
+        height: calc(100vh - 200px); 
+    }
+}
+
+/* ---------------------------------------------------------------------- */
+/* --- FIM: MEDIA QUERIES --- */
+/* ---------------------------------------------------------------------- */
