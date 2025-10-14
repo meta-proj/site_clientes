@@ -181,8 +181,6 @@ body {
     color: var(--primary-color);
     text-decoration: none;
     padding: 5px 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
     transition: all 0.3s ease;
 }
 .header-right .logout-link:hover {
@@ -418,5 +416,6 @@ body {
     color: var(--white-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 
