@@ -317,7 +317,7 @@ body {
 }
 
 .iframe-container {
-    height: calc(100vh - 180px);
+    height: calc(100vh - 135px);
     overflow: hidden;
 }
 .iframe-container iframe {
@@ -419,3 +419,4 @@ body {
     color: var(--white-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
