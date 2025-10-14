@@ -11,7 +11,21 @@
     <header class="header">
         <div class="header-left">
             <img src="{{ url_for('static', filename='logo_meta.png') }}" alt="Logo Meta" class="header-logo">
-            <h1>Portal do Cliente Meta</h1>
+            <h1></h1>
+        </div>
+
+        <div class="nav-center-container">
+            {% if bi_url or error or active_key %}
+            <nav class="reports-nav-centralizada">
+                {% for report in available_reports %}
+                    <a href="{{ url_for('dashboard', bi_key=report.key) }}"
+                       class="{% if report.key == active_key %}active{% endif %}"
+                    >
+                        {{ report.name }}
+                    </a>
+                {% endfor %}
+            </nav>
+            {% endif %}
         </div>
         <div class="header-right">
             <span>Olá, {{ username }}</span>
@@ -19,20 +33,8 @@
         </div>
     </header>
 
-    {% if bi_url or error %}
-    <nav class="reports-nav">
-        {% for report in available_reports %}
-            <a href="{{ url_for('dashboard', bi_key=report.key) }}"
-               class="{% if report.key == active_key %}active{% endif %}"
-            >
-                {{ report.name }}
-            </a>
-        {% endfor %}
-    </nav>
-    {% endif %}
-    
     <main class="main-content">
-        {% if not bi_url and not error %}
+        {% if not bi_url and not error %} 
             <section class="welcome-section">
                 <h1>Bem-vindo(a), {{ username }}!</h1>
                 <p>Selecione um dos relatórios abaixo para visualizar suas informações.</p>
