@@ -1,12 +1,12 @@
 /* static/css/styles.css */
 
-/* Cores da Paleta */
+/* Cores da Paleta (sem alterações) */
 :root {
-    --primary-color: #5A3334;  /* Marrom Principal */
-    --secondary-color: #7B4445; /* Variação de Marrom Mais Claro */
-    --accent-color: #A66567; /* Variação de Marrom Mais Suave */
-    --text-color: #333333; /* Cinza Escuro para textos */
-    --light-bg-color: #f4f4f4; /* Fundo padrão */
+    --primary-color: #5A3334;
+    --secondary-color: #7B4445;
+    --accent-color: #A66567;
+    --text-color: #333333;
+    --light-bg-color: #f4f4f4;
     --white-color: #FFFFFF;
 }
 
@@ -18,7 +18,7 @@ body {
     color: var(--text-color);
 }
 
-/* Estilo para a página de login */
+/* Estilo para a página de login (sem alterações) */
 .login-body {
     display: flex;
     justify-content: center;
@@ -32,7 +32,7 @@ body {
     background-image: none; 
 }
 
-/* CONTAINER DE FUNDO para o Canvas */
+/* CONTAINER DE FUNDO para o Canvas (sem alterações) */
 #particle-net-bg {
     position: absolute;
     top: 0;
@@ -42,7 +42,7 @@ body {
     z-index: 1;
 }
 
-/* Estilos de Login */
+/* Estilos de Login (sem alterações) */
 .login-container {
     background: var(--white-color);
     padding: 50px;
@@ -137,18 +137,28 @@ body {
     display: block;
     overflow: auto;
 }
+
+/* HEADER - Solução Final de 3 Colunas Centralizadas */
 .header {
     background-color: var(--white-color);
     padding: 8px 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.header-left {
+
+/* GARANTE SIMETRIA DOS LADOS */
+.header-left, 
+.header-right {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    /* Define uma largura base para garantir distribuição simétrica */
+    flex-basis: 200px; 
 }
+
+/* ATENÇÃO: Estilos específicos do lado esquerdo (Logo e Título) */
 .header-left h1 {
     margin: 0;
     font-size: 20px;
@@ -160,40 +170,10 @@ body {
     width: 80px;
 }
 
-/* Navegação de Relatórios (abaixo do Header) */
-.reports-nav {
-    display: flex;
-    gap: 5px;
-    padding: 10px 20px;
-    background-color: var(--white-color);
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.reports-nav a {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.reports-nav a:hover {
-    background-color: var(--light-bg-color);
-    color: var(--primary-color);
-}
-
-.reports-nav a.active {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Header - Ajuste para separar o Sair */
+/* Estilos específicos do lado direito */
 .header-right {
-    display: flex;
-    align-items: center;
+    /* Alinha o conteúdo (Olá, admin | Sair) à direita da sua coluna base */
+    justify-content: flex-end; 
     gap: 15px;
     font-weight: 600;
 }
@@ -213,7 +193,18 @@ body {
     color: var(--text-color);
 }
 
-/* --- TELA INICIAL --- */
+/* Navegação de Relatórios (ANTIGA - DESATIVADA) */
+.reports-nav {
+    display: none !important; 
+    padding: 0;
+    border-bottom: none;
+    box-shadow: none;
+}
+.reports-nav a {
+    display: none;
+}
+
+/* --- TELA INICIAL (sem alterações) --- */
 
 .welcome-section {
     padding: 40px;
@@ -241,7 +232,7 @@ body {
     margin-top: 20px;
 }
 
-/* Cards */
+/* Cards (sem alterações) */
 .report-card {
     display: flex;
     flex-direction: column;
@@ -279,7 +270,7 @@ body {
     color: var(--secondary-color);
 }
 
-/* --- TRATAMENTO DE ERRO APRIMORADO --- */
+/* --- TRATAMENTO DE ERRO APRIMORADO (sem alterações) --- */
 
 .error-box {
     padding: 30px;
@@ -314,7 +305,7 @@ body {
     background-color: var(--secondary-color);
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* --- CONTEÚDO PRINCIPAL (sem alterações) --- */
 
 .main-content {
     width: 95%;
@@ -336,7 +327,7 @@ body {
     display: block;
 }
 
-/* (loading) */
+/* (loading) (sem alterações) */
 .loading-body {
     display: flex;
     flex-direction: column;
@@ -360,7 +351,7 @@ body {
     font-weight: 600;
 }
 
-/* Animação dos três pontinhos */
+/* Animação dos três pontinhos (sem alterações) */
 .loading-dots {
     display: inline-block;
     overflow: hidden;
@@ -385,4 +376,46 @@ body {
     0% { opacity: 0; }
     50% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* --- ESTILOS DE NAVEGAÇÃO CENTRALIZADA --- */
+/* ---------------------------------------------------------------------- */
+
+/* 1. CONTAINER CENTRAL: Força o espaço e centraliza o conteúdo. */
+.nav-center-container {
+    flex-grow: 1; 
+    text-align: center;
+    align-self: center;
+    min-width: 0; 
+}
+
+/* 2. NAVEGAÇÃO CENTRALIZADA: Alinhamento dos botões (links) */
+.reports-nav-centralizada {
+    display: inline-flex; 
+    gap: 5px;
+    white-space: nowrap; 
+}
+
+
+/* Estilos de link da navegação centralizada (sem alterações) */
+.reports-nav-centralizada a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.reports-nav-centralizada a:hover {
+    background-color: var(--light-bg-color);
+    color: var(--primary-color);
+}
+
+.reports-nav-centralizada a.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
