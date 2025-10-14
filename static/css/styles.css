@@ -212,7 +212,6 @@ body {
     background-color: var(--white-color);
     margin: 20px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 .welcome-section h1 {
     color: var(--primary-color);
@@ -419,4 +418,5 @@ body {
     color: var(--white-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
