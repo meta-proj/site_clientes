@@ -12,15 +12,16 @@ DB_CONFIG = {
 # --- NOMES DE RELATÓRIOS ---
 REPORTS = {
     "dp": {
-        "name": "Departamento Pessoal 👥"
+        "name": "Departamento Pessoal"
     },
     "fiscal": {
-        "name": "Fiscal 💰"
+        "name": "Fiscal"
     },
     "contabil": {
-        "name": "Contábil 📊"
+        "name": "Contábil"
     },
     "produtos": {
-        "name": "Produtos 📦"
+        "name": "Produtos"
     }
 }
+
