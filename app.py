@@ -1,14 +1,15 @@
-# app.py
 
 import os
 import mysql.connector
 from flask import Flask, render_template, request, redirect, url_for, session
 import config
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# --- FUNÇÃO PARA CONECTAR AO BANCO DE DADOS ---
+bcrypt = Bcrypt(app) 
+
 def get_db_connection():
     try:
         return mysql.connector.connect(**config.DB_CONFIG)
@@ -16,7 +17,6 @@ def get_db_connection():
         print(f"Erro ao conectar ao banco de dados: {err}")
         return None
 
-# --- ROTA DE LOGIN ---
 @app.route("/", methods=["GET", "POST"])
 def login():
     error = None
@@ -31,25 +31,28 @@ def login():
 
         cursor = db.cursor(dictionary=True)
         
-        # A consulta busca o usuário e a senha para autenticação
-        query = "SELECT * FROM Usuarios WHERE USUARIO = %s AND SENHA = %s"
-        cursor.execute(query, (username, password))
+        query = "SELECT * FROM Usuarios WHERE USUARIO = %s"
+        cursor.execute(query, (username,))
         user_data = cursor.fetchone()
 
         cursor.close()
         db.close()
 
         if user_data:
-            session["username"] = user_data["USUARIO"]
-            # Armazena todos os dados do BD, incluindo os links do BI
-            session["user_data"] = user_data 
-            return redirect(url_for("dashboard"))
+            try:
+                if bcrypt.check_password_hash(user_data["SENHA"], password):
+                    session["username"] = user_data["USUARIO"]
+                    session["user_data"] = user_data 
+                    return redirect(url_for("dashboard"))
+                else:
+                    error = "Usuário ou senha incorretos. Tente novamente."
+            except ValueError:
+                error = "Erro de validação da senha. Contate o administrador."
         else:
             error = "Usuário ou senha incorretos. Tente novamente."
     
-    return render_template("login.html", error=error)
+    return render_template("login.html", error=error, info_message=None)
 
-# --- ROTA DO PAINEL ---
 @app.route("/dashboard")
 @app.route("/dashboard/<bi_key>")
 def dashboard(bi_key=None):
@@ -62,7 +65,6 @@ def dashboard(bi_key=None):
     bi_url = None
     error_message = None
     
-    # Mapeia as chaves dos relatórios para as colunas do banco de dados
     report_mapping = {
         "dp": "DP",
         "fiscal": "FISCAL",
@@ -70,35 +72,31 @@ def dashboard(bi_key=None):
         "produtos": "PRODUTOS"
     }
 
-    # Gera a lista COMPLETA de relatórios para exibir TODOS os botões
     available_reports = []
-    for key, data in config.REPORTS.items():
-        available_reports.append({
-            "key": key,
-            "name": data.get("name")
-        })
+    if hasattr(config, 'REPORTS'): 
+        for key, data in config.REPORTS.items():
+            available_reports.append({
+                "key": key,
+                "name": data.get("name")
+            })
 
-    # Se uma chave de BI foi especificada na URL, tenta encontrar o link
     if bi_key and bi_key in report_mapping:
         column_name = report_mapping[bi_key]
-        # Pega o link do BI da sessão
         bi_url = user_data.get(column_name) 
         
         if not bi_url:
-            # Mensagem de erro aprimorada
-            error_message = f"Você não tem permissão de acesso ao relatório de {config.REPORTS[bi_key]['name']}."
+            report_name = config.REPORTS.get(bi_key, {}).get("name", "este relatório")
+            error_message = f"Você não tem permissão de acesso ao relatório de {report_name}."
 
-    # Envia também a chave do relatório ativo para destacar o botão no menu
     return render_template(
         "dashboard.html",
         bi_url=bi_url,
         error=error_message,
         available_reports=available_reports,
         username=username,
-        active_key=bi_key # Adicionado para destacar o botão ativo
+        active_key=bi_key
     )
 
-# --- OUTRAS ROTAS ---
 @app.route("/forgot-password")
 def forgot_password():
     info_message = "Entre em contato com o suporte ao cliente."
@@ -109,7 +107,6 @@ def logout():
     session.clear()
     return redirect(url_for("login"))
 
-# (Opcional) Healthcheck para plataformas de deploy
 @app.get("/health")
 def health():
     return {"status": "ok"}, 200
